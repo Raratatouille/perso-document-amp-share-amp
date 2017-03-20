@@ -10,6 +10,108 @@
      -->
 <alfresco-config>
 
+<!-- Configuration de la vue de recherche avancée -->
+	<config evaluator="string-compare" condition="AdvancedSearch" replace="true">
+	    <advanced-search>
+	        <forms>
+	            <form labelId="form.label.advancedsearch.doc-generique"
+	            descriptionId="form.description.advancedsearch.doc-generique">
+	            	rafisa:doc-generique
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-travail"
+	            descriptionId="form.description.advancedsearch.doc-travail">
+	            	rafisa:doc-travail
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-bulletinSalaire"
+	            descriptionId="form.description.advancedsearch.doc-bulletinSalaire">
+	            	rafisa:doc-bulletinSalaire
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-contratTravail"
+	            descriptionId="form.description.advancedsearch.doc-contratTravail">
+	            	rafisa:doc-contratTravail
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-etatCivil"
+	            descriptionId="form.description.advancedsearch.doc-etatCivil">
+	            	rafisa:doc-etatCivil
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-CNI"
+	            descriptionId="form.description.advancedsearch.doc-CNI">
+	            	rafisa:doc-CNI
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-passeport"
+	            descriptionId="form.description.advancedsearch.doc-passeport">
+	            	rafisa:doc-passeport
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-livretFamille"
+	            descriptionId="form.description.advancedsearch.doc-livretFamille">
+	            	rafisa:doc-livretFamille
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-scolarite"
+	            descriptionId="form.description.advancedsearch.doc-scolarite">
+	            	rafisa:doc-scolarite
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-bulletinScolaire"
+	            descriptionId="form.description.advancedsearch.doc-bulletinScolaire">
+	            	rafisa:doc-bulletinScolaire
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-diplome"
+	            descriptionId="form.description.advancedsearch.doc-diplome">
+	            	rafisa:doc-diplome
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-logement"
+	            descriptionId="form.description.advancedsearch.doc-logement">
+	            	rafisa:doc-logement
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-quittanceLoyer"
+	            descriptionId="form.description.advancedsearch.doc-quittanceLoyer">
+	            	rafisa:doc-quittanceLoyer
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-factureLogement"
+	            descriptionId="form.description.advancedsearch.doc-factureLogement">
+	            	rafisa:doc-factureLogement
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-personnel"
+	            descriptionId="form.description.advancedsearch.doc-personnel">
+	            	rafisa:doc-personnel
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-lettrePersonnelle"
+	            descriptionId="form.description.advancedsearch.doc-lettrePersonnelle">
+	            	rafisa:doc-lettrePersonnelle
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-dessin"
+	            descriptionId="form.description.advancedsearch.doc-dessin">
+	            	rafisa:doc-dessin
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-sante"
+	            descriptionId="form.description.advancedsearch.doc-sante">
+	            	rafisa:doc-sante
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-bancaire"
+	            descriptionId="form.description.advancedsearch.doc-bancaire">
+	            	rafisa:doc-bancaire
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-releveCompte"
+	            descriptionId="form.description.advancedsearch.doc-releveCompte">
+	            	rafisa:doc-releveCompte
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-RIB"
+	            descriptionId="form.description.advancedsearch.doc-RIB">
+	            	rafisa:doc-RIB
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-achat"
+	            descriptionId="form.description.advancedsearch.doc-achat">
+	            	rafisa:doc-achat
+	            </form>
+	            <form labelId="form.label.advancedsearch.doc-factureAchat"
+	            descriptionId="form.description.advancedsearch.doc-factureAchat">
+	            	rafisa:doc-factureAchat
+	            </form>
+	        </forms>
+	    </advanced-search>
+	</config>
+
+<!-- Configuration pour le document générique -->
+<!-- Configuration de la vue de recherche avancée -->
 	<config evaluator="model-type" condition="rafisa:doc-generique">
 		<forms>
 			<form>
@@ -22,34 +124,20 @@
 					<show id="cm:modifier" for-mode="view" />
 					<show id="cm:modified" for-mode="view" />
 
-					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-familleDoc" force="false" />
+					<show id="rafisa:prop-typeDoc" />
 					<show id="rafisa:prop-owner" force="true" />
 				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel" label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+				</appearance>
 			</form>
 		</forms>
 	</config>
-
-	<config evaluator="model-type" condition="rafisa:doc-travail">
-		<forms>
-			<form>
-				<field-visibility>
-					<show id="cm:name" />
-					<show id="cm:title" force="true" />
-					<show id="cm:description" force="true" />
-					<show id="cm:creator" for-mode="view" />
-					<show id="cm:created" for-mode="view" />
-					<show id="cm:modifier" for-mode="view" />
-					<show id="cm:modified" for-mode="view" />
-
-					<show id="rafisa:prop-typeDoc" force="true" />
-					<show id="rafisa:prop-owner" force="true" />
-					<show id="rafisa:prop-employeur" force="true" />
-				</field-visibility>
-			</form>
-		</forms>
-	</config>
-
-
+<!-- Configuration de la vue de propriétés -->
 	<config evaluator="node-type" condition="rafisa:doc-generique">
 		<forms>
 			<form>
@@ -62,20 +150,49 @@
 					<show id="cm:modifier" for-mode="view" />
 					<show id="cm:modified" for-mode="view" />
 
-					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-familleDoc" force="true" />
+					<show id="rafisa:prop-typeDoc" />
 					<show id="rafisa:prop-owner" force="true" />
 				</field-visibility>
 				<appearance>
-					
-					 <set id="set-rafisaDoc" appearance="bordered-panel"/>
+					 <set id="set-rafisaDoc" appearance="bordered-panel" label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc"/>
 						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
 						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
-
 				</appearance>
 			</form>
 		</forms>
 	</config>
 
+<!-- Configuration pour les documents de type travail et ses sous-types -->
+	<config evaluator="model-type" condition="rafisa:doc-travail">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-employeur" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" />
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-employeur" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
 	<config evaluator="node-type" condition="rafisa:doc-travail">
 		<forms>
 			<form>
@@ -88,32 +205,1444 @@
 					<show id="cm:modifier" for-mode="view" />
 					<show id="cm:modified" for-mode="view" />
 
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
 					<show id="rafisa:prop-typeDoc" force="true" />
 					<show id="rafisa:prop-owner" force="true" />
 					<show id="rafisa:prop-employeur" force="true" />
 				</field-visibility>
 				<appearance>
-					 <set id="set-rafisaDoc" appearance="bordered-panel" />
-						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" />
 						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
-						 <field id="rafisa:prop-employeur" set="set-rafisaDoc"/>
-
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-employeur" set="set-complement"/>
 				</appearance>
 			</form>
 		</forms>
 	</config>
 
+	<config evaluator="model-type" condition="rafisa:doc-contratTravail">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-employeur" force="true" />
+					<show id="rafisa:prop-dateSignature" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-employeur" set="set-complement"/>
+						 <field id="rafisa:prop-dateSignature" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-contratTravail">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-employeur" force="true" />
+					<show id="rafisa:prop-dateSignature" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-employeur" set="set-complement"/>
+						 <field id="rafisa:prop-dateSignature" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-bulletinSalaire">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-employeur" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-employeur" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeSalaire"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisSalaire"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-bulletinSalaire">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-employeur" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-employeur" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeSalaire"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisSalaire"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+<!-- Configuration pour les documents relatif au logement et ses sous-types -->
+	<config evaluator="model-type" condition="rafisa:doc-logement">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-nomLogement" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" />
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-nomLogement" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-logement">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-nomLogement" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" />
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-nomLogement" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-quittanceLoyer">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-nomLogement" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-nomLogement" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeLoyer"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisLoyer"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-quittanceLoyer">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-nomLogement" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-nomLogement" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeLoyer"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisLoyer"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-factureLogement">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-nomLogement" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-nomLogement" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeAbonnement"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisAbonnement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-factureLogement">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-nomLogement" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-nomLogement" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeAbonnement"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisAbonnement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+<!-- Configuration pour les documents d'état civil et ses sous-types -->
+<!-- Configuration de la vue de recherche avancée -->
+	<config evaluator="model-type" condition="rafisa:doc-etatCivil">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+<!-- Configuration de la vue de propriétés -->
+	<config evaluator="node-type" condition="rafisa:doc-etatCivil">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-CNI">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-dateValidite" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-dateValidite" set="set-complement" label-id="form.field.label.dateFinValidite"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-CNI">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-dateValidite" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-dateValidite" set="set-complement" label-id="form.field.label.dateFinValidite"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-passeport">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-dateValidite" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-dateValidite" set="set-complement" label-id="form.field.label.dateFinValidite"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-passeport">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-dateValidite" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-dateValidite" set="set-complement" label-id="form.field.label.dateFinValidite"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-livretFamille">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-livretFamille">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-dateValidite" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+<!-- Configuration pour les documents relatif à la scolarité et ses sous-types -->
+<!-- Configuration de la vue de recherche avancée -->
+	<config evaluator="model-type" condition="rafisa:doc-scolarite">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementScolaire" force="false" />
+					<show id="rafisa:prop-anneeScolaire" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementScolaire" set="set-complement"/>
+						 <field id="rafisa:prop-anneeScolaire" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+<!-- Configuration de la vue de propriétés -->
+	<config evaluator="node-type" condition="rafisa:doc-scolarite">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" force="true"  />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementScolaire" force="false" />
+					<show id="rafisa:prop-anneeScolaire" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementScolaire" set="set-complement"/>
+						 <field id="rafisa:prop-anneeScolaire" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-bulletinScolaire">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementScolaire" force="false" />
+					<show id="rafisa:prop-anneeScolaire" force="true" />
+					<show id="rafisa:prop-niveauScolaire" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementScolaire" set="set-complement"/>
+						 <field id="rafisa:prop-anneeScolaire" set="set-complement"/>
+						 <field id="rafisa:prop-niveauScolaire" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-bulletinScolaire">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementScolaire" force="false" />
+					<show id="rafisa:prop-anneeScolaire" force="true" />
+					<show id="rafisa:prop-niveauScolaire" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementScolaire" set="set-complement"/>
+						 <field id="rafisa:prop-anneeScolaire" set="set-complement"/>
+						 <field id="rafisa:prop-niveauScolaire" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-diplome">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view"/>
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementScolaire" force="false" />
+					<show id="rafisa:prop-anneeScolaire" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementScolaire" set="set-complement"/>
+						 <field id="rafisa:prop-anneeScolaire" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-diplome">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view" />
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementScolaire" force="false" />
+					<show id="rafisa:prop-anneeScolaire" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementScolaire" set="set-complement"/>
+						 <field id="rafisa:prop-anneeScolaire" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+<!-- Configuration pour les documents personnels -->
+<!-- Configuration de la vue de recherche avancée -->
+	<config evaluator="model-type" condition="rafisa:doc-personnel">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-emetteur" force="true" />
+					<show id="rafisa:prop-dateReceptionPerso" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-emetteur" set="set-complement"/>
+						 <field id="rafisa:prop-dateReceptionPerso" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+<!-- Configuration de la vue de propriétés -->
+	<config evaluator="node-type" condition="rafisa:doc-personnel">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-emetteur" force="true" />
+					<show id="rafisa:prop-dateReceptionPerso" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-emetteur" set="set-complement"/>
+						 <field id="rafisa:prop-dateReceptionPerso" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-lettrePersonnelle">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-emetteur" force="true" />
+					<show id="rafisa:prop-dateReceptionPerso" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-emetteur" set="set-complement"/>
+						 <field id="rafisa:prop-dateReceptionPerso" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-lettrePersonnelle">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-emetteur" force="true" />
+					<show id="rafisa:prop-dateReceptionPerso" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-emetteur" set="set-complement"/>
+						 <field id="rafisa:prop-dateReceptionPerso" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-dessin">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-emetteur" force="true" />
+					<show id="rafisa:prop-dateReceptionPerso" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-emetteur" set="set-complement"/>
+						 <field id="rafisa:prop-dateReceptionPerso" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-dessin">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-emetteur" force="true" />
+					<show id="rafisa:prop-dateReceptionPerso" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-emetteur" set="set-complement"/>
+						 <field id="rafisa:prop-dateReceptionPerso" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+<!-- Configuration pour les documents relatif à la santé -->
+<!-- Configuration de la vue de recherche avancée -->
+	<config evaluator="model-type" condition="rafisa:doc-sante">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+<!-- Configuration de la vue de propriétés -->
+	<config evaluator="node-type" condition="rafisa:doc-sante">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+<!-- Configuration pour les documents bancaires -->
+<!-- Configuration de la vue de recherche avancée -->
+	<config evaluator="model-type" condition="rafisa:doc-bancaire">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementBancaire" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementBancaire" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+<!-- Configuration de la vue de propriétés -->
+	<config evaluator="node-type" condition="rafisa:doc-bancaire">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementBancaire" force="true" />
+					<show id="rafisa:prop-numCompte" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementBancaire" set="set-complement"/>
+						 <field id="rafisa:prop-numCompte" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-releveCompte">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementBancaire" force="true" />
+					<show id="rafisa:prop-numCompte" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementBancaire" set="set-complement"/>
+						 <field id="rafisa:prop-numCompte" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeReleveCompte"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisReleveCompte"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-releveCompte">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementBancaire" force="true" />
+					<show id="rafisa:prop-numCompte" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementBancaire" set="set-complement"/>
+						 <field id="rafisa:prop-numCompte" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeReleveCompte"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisReleveCompte"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-RIB">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementBancaire" force="true" />
+					<show id="rafisa:prop-numCompte" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementBancaire" set="set-complement"/>
+						 <field id="rafisa:prop-numCompte" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-RIB">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementBancaire" force="true" />
+					<show id="rafisa:prop-numCompte" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementBancaire" set="set-complement"/>
+						 <field id="rafisa:prop-numCompte" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+<!-- Configuration pour les documents relatifs à un achat -->
+<!-- Configuration de la vue de recherche avancée -->
+	<config evaluator="model-type" condition="rafisa:doc-achat">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-produitAchete" force="true" />
+					<show id="rafisa:prop-vendeur" force="true" />
+					<show id="rafisa:prop-dateAchat" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-produitAchete" set="set-complement"/>
+						 <field id="rafisa:prop-vendeur" set="set-complement"/>
+						 <field id="rafisa:prop-dateAchat" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+<!-- Configuration de la vue de propriétés -->
+	<config evaluator="node-type" condition="rafisa:doc-achat">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" force="true" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-produitAchete" force="true" />
+					<show id="rafisa:prop-vendeur" force="true" />
+					<show id="rafisa:prop-dateAchat" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-produitAchete" set="set-complement"/>
+						 <field id="rafisa:prop-vendeur" set="set-complement"/>
+						 <field id="rafisa:prop-dateAchat" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="rafisa:doc-factureAchat">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-produitAchete" force="true" />
+					<show id="rafisa:prop-vendeur" force="true" />
+					<show id="rafisa:prop-dateAchat" force="false" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-produitAchete" set="set-complement"/>
+						 <field id="rafisa:prop-vendeur" set="set-complement"/>
+						 <field id="rafisa:prop-dateAchat" set="set-complement"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="rafisa:doc-factureAchat">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<show id="rafisa:prop-familleDoc" for-mode="view"/>
+					<show id="rafisa:prop-typeDoc" for-mode="view" />
+					<show id="rafisa:prop-owner" force="true" />
+					<show id="rafisa:prop-etablissementBancaire" force="true" />
+					<show id="rafisa:prop-numCompte" force="true" />
+					<show id="rafisa:prop-annee" force="true" />
+					<show id="rafisa:prop-mois" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-rafisaDoc" appearance="bordered-panel"  label-id="form.set.label.rafisadoc"/>
+						 <field id="rafisa:prop-familleDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-typeDoc" set="set-rafisaDoc" read-only="true"/>
+						 <field id="rafisa:prop-owner" set="set-rafisaDoc"/>
+					 <set id="set-complement" appearance="bordered-panel"  label-id="form.set.label.complement"/>
+						 <field id="rafisa:prop-etablissementBancaire" set="set-complement"/>
+						 <field id="rafisa:prop-numCompte" set="set-complement"/>
+						 <field id="rafisa:prop-annee" set="set-complement" label-id="form.field.label.anneeReleveCompte"/>
+						 <field id="rafisa:prop-mois" set="set-complement" label-id="form.field.label.moisReleveCompte"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+
+<!-- Configuration pour les aspects -->
+<!-- Aspect document physique -->
+	<config evaluator="aspect" condition="rafisa:aspe-documentPhysique">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="rafisa:prop-emplacement" force="true"/>
+					<show id="rafisa:prop-dateReception" force="true" />
+					<show id="rafisa:prop-dateDestruction" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-docPhysique" appearance="bordered-panel"  label-id="form.set.label.docphysique"/>
+						 <field id="rafisa:prop-emplacement" set="set-docPhysique"/>
+						 <field id="rafisa:prop-dateReception" set="set-docPhysique"/>
+						 <field id="rafisa:prop-dateDestruction" set="set-docPhysique"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="aspect" condition="rafisa:aspe-garantie">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="rafisa:prop-dateGarantie" force="true"/>
+					<show id="rafisa:prop-dureeGarantie" force="true" />
+				</field-visibility>
+				<appearance>
+					 <set id="set-garantie" appearance="bordered-panel"  label-id="form.set.label.garantie"/>
+						 <field id="rafisa:prop-dateGarantie" set="set-garantie"/>
+						 <field id="rafisa:prop-dureeGarantie" set="set-garantie"/>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+<!-- Configuration des types & aspects utilisables dans SHARE -->
 	<config evaluator="string-compare" condition="DocumentLibrary">
+		<aspects>
+		    <visible>
+		        <aspect name="rafisa:aspe-documentPhysique"/>
+		        <aspect name="rafisa:aspe-garantie"/>
+		    </visible>
+		    <addable> <!-- defaults to visible config -->
+		        <aspect name="rafisa:aspe-documentPhysique"/>
+		        <aspect name="rafisa:aspe-garantie"/>
+		    </addable>
+		    <removeable> <!-- defaults to visible config -->
+		    </removeable>
+		</aspects>
         <types>
             <type name="cm:content">
                 <subtype name="rafisa:doc-generique" />
+                <subtype name="rafisa:doc-travail" />
+                <subtype name="rafisa:doc-contratTravail" />
+                <subtype name="rafisa:doc-bulletinSalaire" />
+                <subtype name="rafisa:doc-etatCivil" />
+                <subtype name="rafisa:doc-CNI" />
+                <subtype name="rafisa:doc-passeport" />
+                <subtype name="rafisa:doc-livretFamille" />
+                <subtype name="rafisa:doc-logement" />
+                <subtype name="rafisa:doc-quittanceLoyer" />
+                <subtype name="rafisa:doc-factureLogement" />
+                <subtype name="rafisa:doc-personnel" />
+                <subtype name="rafisa:doc-lettrePersonnelle" />
+                <subtype name="rafisa:doc-dessin" />
+                <subtype name="rafisa:doc-sante" />
+                <subtype name="rafisa:doc-bancaire" />
+                <subtype name="rafisa:doc-releveCompte" />
+                <subtype name="rafisa:doc-RIB" />
+                <subtype name="rafisa:doc-achat" />
+                <subtype name="rafisa:doc-factureAchat" />
             </type>
 
             <type name="rafisa:doc-generique">
                 <subtype name="rafisa:doc-travail" />
+                <subtype name="rafisa:doc-contratTravail" />
+                <subtype name="rafisa:doc-bulletinSalaire" />
+                <subtype name="rafisa:doc-etatCivil" />
+                <subtype name="rafisa:doc-CNI" />
+                <subtype name="rafisa:doc-passeport" />
+                <subtype name="rafisa:doc-livretFamille" />
+                <subtype name="rafisa:doc-logement" />
+                <subtype name="rafisa:doc-quittanceLoyer" />
+                <subtype name="rafisa:doc-factureLogement" />
+                <subtype name="rafisa:doc-personnel" />
+                <subtype name="rafisa:doc-lettrePersonnelle" />
+                <subtype name="rafisa:doc-dessin" />
+                <subtype name="rafisa:doc-sante" />
+                <subtype name="rafisa:doc-bancaire" />
+                <subtype name="rafisa:doc-releveCompte" />
+                <subtype name="rafisa:doc-RIB" />
+                <subtype name="rafisa:doc-achat" />
+                <subtype name="rafisa:doc-factureAchat" />
             </type>
 
             <type name="rafisa:doc-travail">
+                <subtype name="rafisa:doc-contratTravail" />
+                <subtype name="rafisa:doc-bulletinSalaire" />
+            </type>
+
+            <type name="rafisa:doc-etatCivil">
+                <subtype name="rafisa:doc-CNI" />
+                <subtype name="rafisa:doc-passeport" />
+                <subtype name="rafisa:doc-livretFamille" />
+            </type>
+
+            <type name="rafisa:doc-logement">
+                <subtype name="rafisa:doc-quittanceLoyer" />
+                <subtype name="rafisa:doc-factureLogement" />
+            </type>
+
+            <type name="rafisa:doc-personnel">
+                <subtype name="rafisa:doc-lettrePersonnelle" />
+                <subtype name="rafisa:doc-dessin" />
+            </type>
+
+            <type name="rafisa:doc-bancaire">
+                <subtype name="rafisa:doc-releveCompte" />
+                <subtype name="rafisa:doc-RIB" />
+            </type>
+
+            <type name="rafisa:doc-achat">
+                <subtype name="rafisa:doc-factureAchat" />
             </type>
 
             <type name="cm:folder">
